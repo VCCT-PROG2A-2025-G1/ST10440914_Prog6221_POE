@@ -29,7 +29,7 @@ If you ask it things like:
 "How do I make a strong password?"
 "What’s phishing?"
 "How do I stay safe online?"
-It will give you a nice answer to help you understand! 🧠💻
+It will give you a nice answer to help you understand!
 
 **Says goodbye**
 
