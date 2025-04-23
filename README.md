@@ -1,18 +1,14 @@
-# Chatbot PROG POE Part 1
+**Cybersecurity Chatbot**
+This is a simple C# console application that acts as a friendly chatbot to teach users the basics of cybersecurity awareness. This bot interacts with the user using a command-line interface, answering questions about online safety, password management, phishing, and more.
 
-This is a simple chatbot application written in C#. The chatbot provides basic questions and responses on topics like password safety, phishing, and safe browsing. Additionally, it plays a sound file, displays ASCII art, and greets the user when the program starts.
-
-## Features
-
-- **Sound Playback**: The chatbot plays a sound file when it starts.
-- **ASCII Art**: The chatbot displays an ASCII art when it starts.
-- **Greeting**: The chatbot greets the user with a welcoming message.
-- **Basic Q&A**: The chatbot provides pre-defined responses to common security questions.
-
-### Running the Application
-
-Upon running the chatbot, it will:
-- Display an ASCII art greeting.
-- Play a sound file.
-- Greet the user with a welcoming message.
-- Allow the user to ask specific questions about password safety, phishing, and safe browsing.
+**Features**
+- ASCII Art welcome banner
+- Greeting sound played on startup
+- Delayed text output for a natural conversational feel
+- Personalised responses based on user input
+- Educational content on:
+  - Password security
+  - Phishing awareness
+  - General cybersecurity tips
+- Error handling for sound playback
+- Regex-based input cleaning for flexible matching
