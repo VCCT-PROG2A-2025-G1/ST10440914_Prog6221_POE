@@ -8,11 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Windows.Extensions" Version="9.0.4" />
+    <None Remove="Assets\Greeting.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Content Include="Assets\Greeting.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Windows.Extensions" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
