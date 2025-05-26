@@ -10,8 +10,6 @@ namespace ST10440914_PROG6221_POEPart2
 {
     class Enhanced
     {
-        static Dictionary<string, string> memory = new Dictionary<string, string>();
-        static List<string> interests = new List<string>();
         static string name = Greeting.name;
         static Random rand = new Random();
         public static string topic = "";
