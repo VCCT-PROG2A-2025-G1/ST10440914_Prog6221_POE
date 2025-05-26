@@ -12,11 +12,9 @@ namespace ST10440914_PROG6221_POEPart2
     {
         static Dictionary<string, string> memory = new Dictionary<string, string>();
         static List<string> interests = new List<string>();
-        public static List<string> UserTopic = new List<string>();
         static string name = Greeting.name;
         static Random rand = new Random();
         public static string topic = "";
-        static string currtopic = "";
 
         public static void DetectSentiment(string input)
         {
@@ -44,76 +42,96 @@ namespace ST10440914_PROG6221_POEPart2
             }
         }
 
-        public static void DetectInterest(string input)
+        public static void DetectInterest(List<string> userTopic, string input)
         {
             
             int index = input.IndexOf("interested in");
             topic = input.Substring(index + 13).Trim().TrimEnd('.', '!', '?');
 
-            if (!string.IsNullOrWhiteSpace(topic) && !UserTopic.Contains(topic))
+            if (!string.IsNullOrWhiteSpace(topic) && !userTopic.Contains(topic))
             {
-                UserTopic.Add(topic);
+                userTopic.Add(topic);
                 TextDelay.textDelay($"Great! I'll remember that you're interested in {topic}. It's a crucial part of staying safe online.");
             }
-            else if (UserTopic.Contains(topic))
+            else if (userTopic.Contains(topic))
             {
                 TextDelay.textDelay($"You've already mentioned you're interested in {topic}.");
             }
         }
-        public static void Remember()
+        public static void Remember(List<string> userTopic)
         {
             TextDelay.textDelay("You were interested in:");
-            foreach (string topic in UserTopic)
+            foreach (string topic in userTopic)
             {
                 TextDelay.textDelay($"\n{topic}");
             }
         }
-        public static void memres()
+        public static void memres(List<string> userTopic , string input)
         {
-            currtopic = UserTopic[UserTopic.Count-1];
+            // Check if UserTopic is empty
+            if (userTopic.Count == 0)
+            {
+                return;
+            }
 
-            if (currtopic.Contains("privacy"))
+            foreach (string topic in userTopic)
             {
-                TextDelay.textDelay("Since you're interested in privacy. ");
-            }
-            else if (currtopic.Contains("password"))
-            {
-                TextDelay.textDelay("Since you're interested in passwords. ");
-            }
-            else if (currtopic.Contains("phishing"))
-            {
-                TextDelay.textDelay("Since you're interested in phishing. ");
-            }
-            else if (currtopic.Contains("safety"))
-            {
-                TextDelay.textDelay("Since you're interested in safety. ");
-            }
-            else if (currtopic.Contains("2fa"))
-            {
-                TextDelay.textDelay("Since you're interested in 2fa");
+                if (input == topic)
+                {
+                    if (topic.Contains("privacy"))
+                    {
+                        TextDelay.textDelay("Since you're interested in privacy.");
+                    }
+                    else if (topic.Contains("password"))
+                    {
+                        TextDelay.textDelay("Since you're interested in passwords.");
+                    }
+                    else if (topic.Contains("phishing"))
+                    {
+                        TextDelay.textDelay("Since you're interested in phishing.");
+                    }
+                    else if (topic.Contains("safety"))
+                    {
+                        TextDelay.textDelay("Since you're interested in safety.");
+                    }
+                    else if (topic.Contains("2fa"))
+                    {
+                        TextDelay.textDelay("Since you're interested in 2FA.");
+                    }
+
+                    return; // Exit after finding the first matching topic
+                }
             }
         }
-        public static void tips()
+        public static void tips(List<string> userTopic)
         {
-            if (currtopic.Contains("privacy"))
+            // Check if UserTopic is empty
+            if (userTopic.Count == 0)
             {
-                TextDelay.textDelay("Since you're interested in privacy:\n- Review your social media privacy settings.\n- Avoid oversharing personal details online.\n- Use secure, private browsers like Brave or Firefox.\n");
+                return;
             }
-            else if (currtopic.Contains("password"))
+
+            string currentTopic = userTopic[userTopic.Count - 1];
+
+            if (currentTopic.Contains("privacy"))
             {
-                TextDelay.textDelay("Since you're interested in passwords:\n- Use long, complex passwords with symbols.\n- Never reuse the same password.\n- Use a password manager like Bitwarden or LastPass.\n");
+                TextDelay.textDelay("\nSince you're interested in privacy:\n- Review your social media privacy settings.\n- Avoid oversharing personal details online.\n- Use secure, private browsers like Brave or Firefox.\n");
             }
-            else if (currtopic.Contains("phishing"))
+            else if (currentTopic.Contains("password"))
             {
-                TextDelay.textDelay("Since you're interested in phishing:\n- Don’t click on suspicious links or attachments.\n- Always verify the sender’s email address.\n- Report phishing emails to your service provider.\n");
+                TextDelay.textDelay("\nSince you're interested in passwords:\n- Use long, complex passwords with symbols.\n- Never reuse the same password.\n- Use a password manager like Bitwarden or LastPass.\n");
             }
-            else if (currtopic.Contains("safety"))
+            else if (currentTopic.Contains("phishing"))
             {
-                TextDelay.textDelay("Since you're interested in safety:\n- Keep your software and antivirus up to date.\n- Lock your devices when not in use.\n- Use two-factor authentication whenever possible.\n");
+                TextDelay.textDelay("\nSince you're interested in phishing:\n- Don’t click on suspicious links or attachments.\n- Always verify the sender’s email address.\n- Report phishing emails to your service provider.\n");
             }
-            else if (currtopic.Contains("2fa"))
+            else if (currentTopic.Contains("safety"))
             {
-                TextDelay.textDelay("Since you're interested in 2FA:\n- Enable 2FA on all major accounts (email, banking, social).\n- Prefer using an authenticator app over SMS.\n- Keep backup codes in a safe place.\n");
+                TextDelay.textDelay("\nSince you're interested in safety:\n- Keep your software and antivirus up to date.\n- Lock your devices when not in use.\n- Use two-factor authentication whenever possible.\n");
+            }
+            else if (currentTopic.Contains("2fa"))
+            {
+                TextDelay.textDelay("\nSince you're interested in 2FA:\n- Enable 2FA on all major accounts (email, banking, social).\n- Prefer using an authenticator app over SMS.\n- Keep backup codes in a safe place.\n");
             }
         }
     }
