@@ -88,5 +88,17 @@ namespace ST10440914_PROG6221_POEPart2
             int num = rand.Next(0, responses.Length);
             TextDelay.textDelay(responses[num]);
         }
+        public static void privacyTips()
+        {
+            string[] responses = new string[]
+            {
+                $"Privacy is essential, {Greeting.name}. Be mindful of the information you share online. Adjust your privacy settings on social media and limit app permissions on your devices.",
+                $"Your privacy matters, {Greeting.name}. Avoid using public Wi-Fi for sensitive tasks, disable location sharing when not needed, and think twice before sharing personal information online.",
+                $"To protect your privacy online, always use strong passwords, enable two-factor authentication, and avoid signing up for unnecessary services that collect your data."
+            };
+
+            int num = rand.Next(0, responses.Length);
+            TextDelay.textDelay(responses[num]);
+        }
     }
 }

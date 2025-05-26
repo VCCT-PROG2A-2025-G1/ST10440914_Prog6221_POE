@@ -44,8 +44,7 @@ namespace ST10440914_PROG6221_POEPart2
                     input.Contains("how are you") ||
                     input.Contains("how are you doing") ||
                     input.Contains("whats up") ||
-                    input.Contains("are you okay") ||
-                    input.Contains("help"))
+                    input.Contains("are you okay"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     GeneralResponse.basic();
@@ -78,48 +77,26 @@ namespace ST10440914_PROG6221_POEPart2
                          input.Contains("anxious"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Enhanced.DetectSentiment();
+                    Enhanced.DetectSentiment(input);
                     Console.ResetColor();
                 }
 
                 //Detect Interest
-                //Displays interest if captured
+                //Displays interests if captured
                 else if (input.Contains("show me my interests") ||
                          input.Contains("what am i interested in") ||
                          input.Contains("interests") ||
                          input.Contains("show me what im interested in"))
                 {
-                    TextDelay.textDelay($"You're interested in {topic}");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.Remember();
+                    Console.ResetColor();
                 }
-                //Captures interest
+                //Captures interests
                 else if (input.Contains("interested in"))
                 {
-                    int index = input.IndexOf("interested in");
-                    topic = input.Substring(index + 13).Trim().TrimEnd('.', '!', '?');
-
-                    if (!string.IsNullOrWhiteSpace(topic) && !UserTopic.Contains(topic))
-                    {
-                        UserTopic.Add(topic);
-                        TextDelay.textDelay($"Great! I'll remember that you're interested in {topic}. It's a crucial part of staying safe online.");
-                    }
-                    else if (UserTopic.Contains(topic))
-                    {
-                        TextDelay.textDelay($"You've already mentioned you're interested in {topic}.");
-                    }
-                }                
-
-                //For Small
-                /*else if (input.Contains("interested in"))
-                {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Enhanced.DetectInterest();
-                    Console.ResetColor();
-                }*/
-
-                else if (input.Contains("what am I interested in") || input.Contains("what do you remember"))
-                {
-                    Console.ForegroundColor= ConsoleColor.Yellow;
-                    Enhanced.Remember();
+                    Enhanced.DetectInterest(input);
                     Console.ResetColor();
                 }
 
@@ -135,14 +112,18 @@ namespace ST10440914_PROG6221_POEPart2
                          input.Contains("how often should i change my password"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     PasswordResponse.phelp();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
                 else if (input.Contains("password manager") ||
                          input.Contains("manager"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     PasswordResponse.pmanager();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
                 else if (input.Contains("what is two factor authentication") ||
@@ -150,7 +131,9 @@ namespace ST10440914_PROG6221_POEPart2
                          input.Contains("2fa"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     PasswordResponse.twofa();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
 
@@ -159,21 +142,27 @@ namespace ST10440914_PROG6221_POEPart2
                          input.Contains("what is phishing"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     PhishingResponse.phishhelp();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
                 else if (input.Contains("how can i recognize phishing") ||
                          input.Contains("how do i spot a fake email"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     PhishingResponse.phishrecognize();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
                 else if (input.Contains("can phishing happen on social media") ||
                          input.Contains("can i be scammed online"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     PhishingResponse.phishsocial();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
 
@@ -187,14 +176,18 @@ namespace ST10440914_PROG6221_POEPart2
                          input.Contains("how do i know if a website is secure"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     SafeBrowsingResponse.safeB();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
                 else if (input.Contains("malware") ||
                          input.Contains("how can i protect myself from malware"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     SafeBrowsingResponse.sbmalware();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
                 else if (input.Contains("incognito mode") ||
@@ -202,7 +195,9 @@ namespace ST10440914_PROG6221_POEPart2
                          input.Contains("is incognito mode safe"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     SafeBrowsingResponse.incmode();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
                 else if (input.Contains("cookies") ||
@@ -210,7 +205,9 @@ namespace ST10440914_PROG6221_POEPart2
                          input.Contains("what are cookies"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     SafeBrowsingResponse.cookies();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
                 else if (input.Contains("is public wifi safe") ||
@@ -220,7 +217,9 @@ namespace ST10440914_PROG6221_POEPart2
                          input.Contains("how do i protect my data on public wifi"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     SafeBrowsingResponse.pubwifi();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
                 else if (input.Contains("how can i stay safe on social media") ||
@@ -232,7 +231,17 @@ namespace ST10440914_PROG6221_POEPart2
                          input.Contains("how to stop people from seeing my info"))
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
                     SafeBrowsingResponse.safesocial();
+                    Enhanced.tips();
+                    Console.ResetColor();
+                }
+                else if (input.Contains("privacy"))
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Enhanced.memres();
+                    SafeBrowsingResponse.privacyTips();
+                    Enhanced.tips();
                     Console.ResetColor();
                 }
 
