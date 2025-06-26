@@ -5,7 +5,7 @@
     <Grid Margin="10">
         <StackPanel>
             <TextBlock Text="Welcome! What’s your name?" FontSize="16" Margin="0,0,0,10" />
-            <TextBox x:Name="NameInput" Margin="0,0,0,10" />
+            <TextBox x:Name="NameInput" Margin="0,0,0,10" KeyDown="NameInput_KeyDown" />
             <Button Content="Continue" Width="100" HorizontalAlignment="Left" Click="Continue_Click" />
         </StackPanel>
     </Grid>

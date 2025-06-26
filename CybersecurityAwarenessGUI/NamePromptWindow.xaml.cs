@@ -41,5 +41,15 @@ namespace CybersecurityAwarenessGUI
         {
             return char.ToUpper(input[0]) + input.Substring(1).ToLower();
         }
+
+        private void NameInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Continue_Click(sender, e);
+                e.Handled = true;
+            }
+        }
+
     }
 }
