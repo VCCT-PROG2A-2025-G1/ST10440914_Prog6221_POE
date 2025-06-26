@@ -76,7 +76,7 @@ namespace CybersecurityAwarenessGUI
 
         //*********************************************************************************************************************
         // Event handler for the Send button click
-        private async void SendButton_Click(object sender, RoutedEventArgs e)
+        private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             string userText = UserInput.Text.Trim();
             userText = userText.ToLower();
@@ -90,7 +90,7 @@ namespace CybersecurityAwarenessGUI
                 ChatDisplay.Text += "Bot: Goodbye! Stay safe online.\n";
 
                 // Wait for 1 second before closing
-                await Task.Delay(1000);
+                //await Task.Delay(1000);
 
                 Application.Current.Shutdown();
             }
@@ -103,7 +103,6 @@ namespace CybersecurityAwarenessGUI
                 QuizWindow quiz = new QuizWindow(LogActivity);
                 quiz.ShowDialog();
             }
-
 
             //*********************************************************************************************************************
             //Task Window
@@ -129,29 +128,31 @@ namespace CybersecurityAwarenessGUI
             //*********************************************************************************************************************
             //General Responses
             if (userText.Contains("general") ||
-                    userText.Contains("how are you") ||
-                    userText.Contains("how are you doing") ||
-                    userText.Contains("whats up") ||
-                    userText.Contains("are you okay"))
+                userText.Contains("how are you") ||
+                userText.Contains("how are you doing") ||
+                userText.Contains("whats up") ||
+                userText.Contains("are you okay"))
             {
-                Logic.basic();
+                string response = Logic.basic(userName);
+                ChatDisplay.Text += $"Bot: {response}\n";
+                LogActivity("Responded with general chatbot response");
             }
-            else if (userText.Contains("what can i ask you about") ||
-                     userText.Contains("what can you help me with") ||
-                     userText.Contains("what questions can i ask you") ||
-                     userText.Contains("what can i ask"))
+            if (userText.Contains("what can i ask you about") ||
+                userText.Contains("what can you help me with") ||
+                userText.Contains("what questions can i ask you") ||
+                userText.Contains("what can i ask"))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                GeneralResponse.help();
-                Console.ResetColor();
+                string response = Logic.help(userName);
+                ChatDisplay.Text += $"Bot: {response}\n";
+                LogActivity("Responded with general chatbot response");
             }
-            else if (userText.Contains("thank you") ||
-                     userText.Contains("i appreciate the help") ||
-                     userText.Contains("thanks"))
+            if (userText.Contains("thank you") ||
+                userText.Contains("i appreciate the help") ||
+                userText.Contains("thanks"))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                GeneralResponse.appreciate();
-                Console.ResetColor();
+                string response = Logic.appreciate(userName);
+                ChatDisplay.Text += $"Bot: {response}\n";
+                LogActivity("Responded with general chatbot response");
             }
 
 
@@ -221,5 +222,56 @@ namespace CybersecurityAwarenessGUI
             ActivityLogWindow logWindow = new ActivityLogWindow(activityLog);
             logWindow.ShowDialog();
         }
-    }
+
+        public static class Logic
+        {
+            private static readonly Random rand = new Random();
+
+            //*********************************************************************************************************************
+            // Basic methods to provide general chatbot responses  
+            public static string basic(string userName)
+            {
+                string[] responses = new string[]
+                {
+                    "I'm doing great, thanks for asking! Ready to help you stay safe online.",
+                    "Feeling fantastic! Nothing beats talking cybersecurity with you.",
+                    $"I'm doing great {userName}, thanks for asking! Are you ready to talk cyber safety?",
+                    "All systems are running smoothly. Let's secure your digital world together!",
+                    "Thanks for asking! I’m always at my best when I get to talk about cybersecurity."
+                };
+
+                int num = rand.Next(responses.Length);
+                return responses[num];
+            }
+            public static string help(string userName)
+            {
+                string[] responses = new string[]
+                {
+                    "I'm here to help you with your cybersecurity questions.",
+                    "Feel free to ask me anything about online safety.",
+                    $"Good question {userName}, you can ask me about password safety, phishing, safe browsing and other topics related to cybersecurity.",
+                    "You can ask me about anything related to online safety like passwords, phishing, scams, and safe browsing.",
+                    "Great question! I can help you understand how to protect yourself online, from creating strong passwords to spotting fake emails."
+                };
+
+                int num = rand.Next(responses.Length);
+                return responses[num];
+            }
+            public static string appreciate(string userName)
+            {
+                string[] responses = new string[]
+                {
+                    $"You're welcome {userName}.",
+                    $"No problem! I'm here to help {userName}.",
+                    $"Anytime {userName}! I'm always here to help you stay safe online."
+                };
+
+                int num = rand.Next(responses.Length);
+                return responses[num];
+            }
+
+            //*********************************************************************************************************************
+            //Basic Methods to provide phishing chatbot responses
+        }
+    }    
 }
