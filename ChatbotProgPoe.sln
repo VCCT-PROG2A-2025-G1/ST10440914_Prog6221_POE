@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ST10440914_PROG6221_POEPart2", "ChatbotProgPoe\ST10440914_PROG6221_POEPart2.csproj", "{8578686D-F3E0-448F-9D78-4F0061023C94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CybersecurityAwarenessGUI", "CybersecurityAwarenessGUI\CybersecurityAwarenessGUI.csproj", "{495FFAD1-B68B-4742-BA2D-4C9B38EEAA85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8578686D-F3E0-448F-9D78-4F0061023C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8578686D-F3E0-448F-9D78-4F0061023C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8578686D-F3E0-448F-9D78-4F0061023C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{495FFAD1-B68B-4742-BA2D-4C9B38EEAA85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495FFAD1-B68B-4742-BA2D-4C9B38EEAA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495FFAD1-B68B-4742-BA2D-4C9B38EEAA85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495FFAD1-B68B-4742-BA2D-4C9B38EEAA85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
